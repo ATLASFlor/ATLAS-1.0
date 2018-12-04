@@ -1,0 +1,94 @@
+!
+!  Grib2nc configure file for ECMWF ERA-Interim
+!
+lonmin -75        ! subset lonmin
+lonmax -25        ! subset lonmax
+latmin -50        ! subset latmin
+latmax 0        ! subset latmax
+nx 66                ! subset nx
+ny 66                ! subset ny
+np 37       ! Number pressure levels (1 2 3 5 7 10 20 30 50 70 100 150 200 250 300 400 500 600 700 775 850 925 1000 )
+nt 11        ! Number of time steps
+dt  6       ! time increment in h
+n2d  6      ! Number of 2d variables  grb --> nc
+n3d  6      ! Number of 3d variables  grb --> nc
+cen_lon  0.
+cen_lat  0.
+missing_value 9.999e+20        ! missing value
+PRESSURE LEVELS
+1000
+975
+950
+925
+900
+875
+850
+825
+800
+775
+750
+700
+650
+600
+550
+500
+450
+400
+350
+300
+250
+225
+200
+175
+150
+125
+100
+70
+50
+30
+20
+10
+7
+5
+3
+2
+1
+VARIABLES 2D
+var2d(1)    'Z:sfc'
+att2d_d(1)  'Geopotential height at surface'
+att2d_u(1)  'gpm'
+var2d(2)    'U10:sfc'
+att2d_d(2)  'u-component of wind at 10m'
+att2d_u(2)  'm/s'
+var2d(3)    'V10:sfc'
+att2d_d(3)  'v-component (meridional) of wind at 10m'
+att2d_u(3)  'm/s'
+var2d(4)    'T2:sfc'
+att2d_d(4)  'temperature at 2m'
+att2d_u(4)  'K'
+var2d(5)    'LSM:sfc'
+att2d_d(5)  'Land mask'
+att2d_u(5)  '-'
+var2d(6)    'BLH:sfc'
+att2d_d(6)  'Planetary Boundary Layer Height'
+att2d_u(6)  'm'
+VARIABLES 3D
+var3d(1)    'T'
+att3d_d(1)  'temperature'
+att3d_u(1)  'K'
+var3d(2)    'U'
+att3d_d(2)  'u velocity'
+att3d_u(2)  'm/s'
+var3d(3)    'V'
+att3d_d(3)  'v velocity'
+att3d_u(3)  'm/s'
+var3d(4)    'W'
+att3d_d(4)  'Vertical omega velocity'
+att3d_u(4)  'Pa/s'
+var3d(5)    'R'
+att3d_d(5)  'Relative humidity'
+att3d_u(5)  '%'
+var3d(6)    'Z'
+att3d_d(6)  'Geopotential height'
+att3d_u(6)  'gpm'
+

@@ -1,0 +1,84 @@
+!
+!  Grib2nc configure file for ARPA
+!
+lonmin 999    ! NOT USED (model gives RLON)
+lonmax 999    ! NOT USED (model gives RLON)
+latmin 999    ! NOT USED (model gives RLON)
+latmax 999    ! NOT USED (model gives RLON)
+nx 154                ! subset nx
+ny 121                ! subset ny
+np  22      ! Number pressure levels
+nt 23        ! Number of time steps
+dt  1       ! time increment in h
+n2d  8      ! Number of 2d variables  grb --> nc
+n3d  6      ! Number of 3d variables  grb --> nc
+cen_lon  10.
+cen_lat  57.5
+missing_value 9.999e+20        ! missing value
+PRESSURE LEVELS
+1050
+1000
+950
+925
+900
+850
+800
+750
+700
+650
+600
+550
+500
+450
+400
+350
+300
+250
+200
+150
+100
+50
+VARIABLES 2D
+var2d(1)    'RLON'
+att2d_d(1)  'longitude. East positive'
+att2d_u(1)  'degrees_east'
+var2d(2)    'RLAT'
+att2d_d(2)  'latitude. North positive'
+att2d_u(2)  'degrees_north'
+var2d(3)    'U:10'
+att2d_d(3)  'u-component (zonal) of wind at 10m'
+att2d_u(3)  'm/s'
+var2d(4)    'V:10'
+att2d_d(4)  'v-component (meridional) of wind at 10m'
+att2d_u(4)  'm/s'
+var2d(5)    'T:2'
+att2d_d(5)  'temperature at 2m'
+att2d_u(5)  'K'
+var2d(6)    'PS'
+att2d_d(6)  'pressure at surface'
+att2d_u(6)  'Pa'
+var2d(7)    'FI:sfc'
+att2d_d(7)  'geopotential at surface'
+att2d_u(7)  'm2/s2'
+var2d(8)    'T:sfc'
+att2d_d(8)  'temperatrue at surface'
+att2d_u(8)  'K'
+VARIABLES 3D
+var3d(1)    'T'
+att3d_d(1)  'temperature'
+att3d_u(1)  'K'
+var3d(2)    'U'
+att3d_d(2)  'u-component (zonal) of wind'
+att3d_u(2)  'm/s'
+var3d(3)    'V'
+att3d_d(3)  'v-component (meridional) of wind'
+att3d_u(3)  'm/s'
+var3d(4)    'OMEGA'
+att3d_d(4)  'vertical velocity'
+att3d_u(4)  'Pa/s'
+var3d(5)    'FI'
+att3d_d(5)  'geopotential'
+att3d_u(5)  'm2/s2'
+var3d(6)    'QV'
+att3d_d(6)  'specific humidity'
+att3d_u(6)  'kg/kg'

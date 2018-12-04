@@ -1,0 +1,58 @@
+!
+!  Grib2nc configure file for NCEP/NCAR Reanalysis 1 at 2.5 degree resolution
+!
+lonmin 0         ! Only used if the model does not give RLON
+lonmax  357.5    ! Only used if the model does not give RLON
+latmin  -90      ! Only used if the model does not give RLAT
+latmax   90      ! Only used if the model does not give RLAT
+nx  144
+ny  73
+np  17      ! Number pressure levels
+nt 2        ! Number of time steps
+dt  6       ! time increment in h
+n2d  1      ! Number of 2d variables  grb --> nc
+n3d  6      ! Number of 3d variables  grb --> nc
+cen_lon  0.
+cen_lat  0.
+missing_value 9.999e+20        ! missing value
+PRESSURE LEVELS
+1000
+925
+850
+700
+600
+500
+400
+300
+250
+200
+150
+100
+70
+50
+30
+20
+10
+VARIABLES 2D
+var2d(1)    'HGT:sfc'
+att2d_d(1)  'Geopotential height at surface'
+att2d_u(1)  'gpm'
+VARIABLES 3D
+var3d(1)    'TMP'
+att3d_d(1)  'temperature'
+att3d_u(1)  'K'
+var3d(2)    'UGRD'
+att3d_d(2)  'u velocity'
+att3d_u(2)  'm/s'
+var3d(3)    'VGRD'
+att3d_d(3)  'v velocity'
+att3d_u(3)  'm/s'
+var3d(4)    'VVEL'
+att3d_d(4)  'Vertical omega velocity'
+att3d_u(4)  'Pa/s'
+var3d(5)    'RH'
+att3d_d(5)  'Relative humidity'
+att3d_u(5)  '%'
+var3d(6)    'HGT'
+att3d_d(6)  'Geopotential height'
+att3d_u(6)  'gpm'
