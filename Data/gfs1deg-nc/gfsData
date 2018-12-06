@@ -1,1 +1,2 @@
-Please, ask for the ejemplo.gfs1deg.nc file.
+Please, ask by email for the ejemplo.gfs1deg.nc file to run the example case. 
+Or download the meteorological desired file from wrf or gfs (if gfs, transform it to netcdf format), and run your own example.
