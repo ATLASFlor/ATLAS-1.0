@@ -84,7 +84,7 @@
   !
   if(phase(iphase)%mer_vs_h.eq.'ESTIMATE-MASTIN')then
   !
-     M0 = phase(iphase)%rhomean*((0.5_rp*phase(iphase)%colheight(subphase)/1d3)**(1.0_rp/0.241_rp)) !MFR
+     M0 = 2500*((0.5_rp*phase(iphase)%colheight(subphase)/1d3)**(1.0_rp/0.241_rp)) !MFR #### phase(iphase)%rhomean could be used instead the fixed 2500 density value
      M0 = M0*ABS(sidt)                                                                              !Mass erupted in this time
   ! 
   ! Save the MER for this phase into a counter 
