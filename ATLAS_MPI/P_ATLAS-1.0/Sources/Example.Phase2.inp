@@ -1,0 +1,79 @@
+ !*********************************************
+ SOURCE_TERM
+!*********************************************
+!*** Phase: Example2
+   !
+   ! ACTIVATE              : yes/no
+   ! NUMBER_PARTICLES      : integer. Total number of particles in each phase (can be slightly modified
+   !                         to make it multiple of the number of time steps).
+   !
+   ! PHASE_NAME            : 
+   ! PHASE_TYPE            : ERUPTION/SATELITE/RESUSPENSION
+   ! INITIAL_TIME          : start time (multiple values are possible) 
+   ! END_TIME              : end time of each phase
+   !
+   ! SOURCE_TYPE           : point/linear/top-hat/suzuki(eruption). / / (resuspension)
+   ! COLUMN_HEIGHT         : value in meters, Above Vent
+   ! MASS_FLOW_RATE        : value in KG/s  /ESTIMATE-MASTIN/ESTIMATE-DEGRUYTER/ESTIMATE-WOODHOUSE
+   ! A_SUZUKI              : value. only for Suzuki source type
+   ! L_SUZUKI              : value. only for Suzuki source type
+   ! D_TOP_HAT             : value in meters. only for Top-hat source type
+   !
+   ! VOLCANO_NAME          : Volcano name or unknown
+   !                         If it is recongnized is not necesary put source_longitud/latitud/elevation
+   ! SOURCE_LONGITUDE      : value in degree
+   ! SOURCE_LATITUDE       : value in degree
+   ! SOURCE_ELEVATION      : value in meters
+   !
+   ! PHASE_GRANULOMETRY    : Path_where_the_granulometry_file_is/file_name.ext or "NONE"
+   ! 
+   ! DISTRIBUTION          : GAUSSIAN/BIGAUSSIAN    
+   ! NUMBER_OF_BINS        : value integer
+   ! FI_MEAN               : value. A second value is used if DISTRIBUTION=BIGAUSSIAN 
+   ! FI_DISP               : value. A second value is used if DISTRIBUTION=BIGAUSSIAN  
+   ! FI_RANGE              : 2 values  
+   ! DENSITY_RANGE         : 2 values (linear interpolation)
+   ! SPHERICITY_RANGE      : 2 values (linear interpolation)
+   !
+   ! AGGREGATION_MODEL     : NONE/CORNELL/PERCENTAGE
+   ! AGGREGATE_SIZE        : value in microns
+   ! AGGREGATE_DENSITY     :
+   ! PERCENTAGE_(%)        : Only for Percentage Model
+   !
+   !
+   !
+       NUMBER_PARTICLES = 1000       
+       !
+       PHASE_NAME       = phase_2
+       PHASE_TYPE       = eruption   
+       INITIAL_TIME     = 21
+       END_TIME         = 23
+       !
+       SOURCE_TYPE      = TOP-HAT      
+       COLUMN_HEIGHT    = 8000
+       MASS_FLOW_RATE   = ESTIMATE-MASTIN
+       A_SUZUKI         = 4.
+       L_SUZUKI         = 5.
+       D_TOP_HAT        = 2000
+       !
+       VOLCANO_NAME     = Chaiten    
+       SOURCE_LONGITUDE = -72.646
+       SOURCE_LATITUDE  = -42.833
+       SOURCE_ELEVATION = 1122
+       !
+       PHASE_GRANULOMETRY = NONE
+       DISTRIBUTION       = GAUSSIAN            
+       NUMBER_OF_BINS     = 10                       
+       FI_MEAN            = 1 2                                
+       FI_DISP            = 1.5 1.7                    
+       FI_RANGE           = -3. 6.
+       DENSITY_RANGE      = 1200 2500
+       SPHERICITY_RANGE   = 0.9 0.9
+       !
+       AGGREGATION
+          AGGREGATION_MODEL   = PERCENTAGE           
+          AGGREGATE_SIZE      = 200  
+          AGGREGATE_DENSITY   = 400
+          PERCENTAGE_(%)      =  20 
+       END_AGGREGATION
+!

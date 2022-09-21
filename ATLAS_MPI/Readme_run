@@ -1,0 +1,30 @@
+**********************	
+	First steps:
+**********************
+1. Check the meteorological file. It is recommended to copy or link it in  Data/wrf-nc/ with the desired name, 
+for example: name.wrf.nc
+
+2. Check the principal input file name.inp located in Runs/name/ 
+In the block METEO_DATA, check the path of the activated meteorlogical file.
+In the block SOURCE_TERM, check the path of the activated source term, in this case, 
+the path must be .../Runs/name/name.Phase1.inp
+
+3. Check the secondary input file name.Phase1.inp located in Runs/name/
+Check that is correct the path indicated in "PHASE_GRANULOMETRY", this must be .../Runs/name/name_phase_1.tgsd
+
+4. Check that the executable P_ATLAS.1.0.x is linked in the /Runs/name/ directory or link it 
+fom ../../P_ATLAS-1.0/P_ATLAS.1.0.x
+
+**********************	
+	To run go to the directory Runs/pcalbuco
+**********************	
+mpirun -n x P_ATLAS.1.0.x name
+
+en mendieta correr con submit_XXX.sh, ver ejemplo en Runs/pcalbuco/
+
+**********************	
+	Check the results
+**********************	
+To control the process, look in name.log
+
+

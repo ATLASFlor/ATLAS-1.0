@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+
+<Document>
+<name>Tonto</name>
+
+<!-- Definition des styles du KML -->
+
+<Style id="My_Style1">
+ <IconStyle> 
+<Icon> <href>b-orange.png</href> </Icon>
+ <scale>0.2</scale>
+</IconStyle> 
+</Style> 
+
+<Style id="My_Style2">
+ <IconStyle>
+ <Icon> <href>b-orange.png</href> </Icon>
+ <scale>0.2</scale>
+</IconStyle>
+</Style> 
+
+<Folder>
+<name>Tiempo 1</name>
+
+ <TimeSpan> 
+  <begin>2010-12-20T00:00:00Z</begin>
+  <end>2010-12-20T01:00:00Z</end>
+ </TimeSpan>
+
+<Placemark>
+<Point><coordinates>9.35162,46.22549,0</coordinates></Point>
+<styleUrl>#My_Style1</styleUrl> 
+</Placemark>
+
+<Placemark>
+<Point><coordinates>7.35196,46.2254,0</coordinates></Point>
+<styleUrl>#My_Style2</styleUrl> <!-- Styles must be defined-->
+</Placemark>
+
+</Folder>
+
+
+<Folder>
+<name>Tiempo 2</name>
+
+ <TimeSpan> 
+   <begin>2010-12-20T01:00:01Z</begin>
+  <end>2010-12-20T02:00:00Z</end>
+ </TimeSpan>
+
+<Placemark>
+<Point><coordinates>7.3,46.2,0</coordinates></Point>
+<styleUrl>#My_Style1</styleUrl> 
+</Placemark>
+
+<Placemark>
+<Point><coordinates>7.35,46.2,0</coordinates></Point>
+<styleUrl>#My_Style2</styleUrl> <!-- Styles must be defined-->
+</Placemark>
+
+</Folder>
+
+</Document>
+</kml>
+
