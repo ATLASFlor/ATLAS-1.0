@@ -10,16 +10,20 @@ EXE=P_ATLAS.$(ver).x
 #
 #  3. Location of the NetCDF library (MN,HOME)
 #
-MACHINE=HOME2
+#MACHINE=HOME2
 #
-ifeq ($(MACHINE),MENDIETA)
-   LIB_NetCDF=$(shell nf-config --flibs)
-   INC_NetCDF=$(shell nf-config --fflags)
-endif
-ifeq ($(MACHINE),HOME2)
-   LIB_NetCDF= /usr/lib/x86_64-linux-gnu/libnetcdff.so
-   INC_NetCDF= -I/usr/include/
-endif
+#ifeq ($(MACHINE),MENDIETA)
+#   LIB_NetCDF=$(shell nf-config --flibs)
+#   INC_NetCDF=$(shell nf-config --fflags)
+#endif
+#ifeq ($(MACHINE),HOME2)
+#   LIB_NetCDF= /usr/lib/x86_64-linux-gnu/libnetcdff.so
+#   INC_NetCDF= -I/usr/include/
+#endif
+
+LIB_NetCDF= $(shell nf-config --prefix)/lib/libnetcdff.so
+INC_NetCDF= $(shell nf-config --fflags)
+
 #
 #----------------------------------------
 # Do not change anything beyond this line
