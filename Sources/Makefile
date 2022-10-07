@@ -33,6 +33,7 @@ INC_NetCDF= $(shell nf-config --fflags)
 #
 ifeq ($(FC),mpif90)
 #  FFLAGS= -ffixed-line-length-132 -O2
+  FFLAGS= -fallow-invalid-boz
   LINKER= $(FC)
   LFLAGS=
 endif
