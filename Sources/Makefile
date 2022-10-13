@@ -66,7 +66,7 @@ FOBJS= ATLAS.o openlog.o runend.o initialize.o readinp.o set_meteo_model.o set_b
 
 .SUFFIXES:.o .f90
 .f90.o:
-	$(FC) -c $(FCFLAGS) ${INC_NetCDF} $<
+	$(FC) -c $(FFLAGS) $(FCFLAGS) ${INC_NetCDF} $<
 #
 #----------------------------------------------
 #  Tasks
