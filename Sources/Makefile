@@ -21,7 +21,7 @@ EXE=P_ATLAS.$(ver).x
 #   INC_NetCDF= -I/usr/include/
 #endif
 
-LIB_NetCDF= -L$(shell nf-config --prefix)/lib -lnetcdff -ldl -lm
+LIB_NetCDF= -L$(shell nf-config --prefix)/lib -lnetcdff -ldl -lm -Wl,-R$(shell nf-config --prefix)/lib
 INC_NetCDF= $(shell nf-config --fflags) 
 #
 #----------------------------------------
