@@ -877,16 +877,12 @@ CONTAINS
       integer(ip)      :: iposi, ioctv, item1, item2, item3
       integer(ip)      :: ilen
       !
-      item1 = '141'o
-      item2 = '172'o
-      item3 = '40'o
-      !
       ilen = LEN_TRIM(word)
       !
       do iposi = 1, ilen                                     ! process all positions
          ioctv = ichar(word(iposi:iposi))                    ! octal value
-         if (item1 .le. ioctv .and. item2 .ge. ioctv) then        ! it is a lower case
-            ioctv = ioctv - item3                            ! equivalent upper case
+         if (int(o'141') .le. ioctv .and. int(o'172') .ge. ioctv) then        ! it is a lower case
+            ioctv = ioctv - int(o'40')                            ! equivalent upper case
             word(iposi:iposi) = char(ioctv)                ! convert it to upcase
          end if
       end do ! iposi=1,ilen

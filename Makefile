@@ -23,7 +23,7 @@ dir := Sources
 #
 ifeq ($(FC),mpif90)
 #  FFLAGS= -ffixed-line-length-132 -O2
-  FFLAGS= -fallow-invalid-boz
+  FFLAGS= 
   LINKER= $(FC)
   LFLAGS=
 endif
