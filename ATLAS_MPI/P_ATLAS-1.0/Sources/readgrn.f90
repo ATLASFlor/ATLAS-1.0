@@ -29,7 +29,7 @@
      !*** Reads granulometry
      !
      fgrn  = phase(iphase)%grnpath
-     fgrn2 = TRIM(problemname)//'_'//TRIM(phase(iphase)%sname)//'.grn'
+     fgrn2 = TRIM(problemname)//'_'//TRIM(phase(iphase)%sname)//'.grn' 
      !
      !***  First number of particles and gas species
      !
@@ -135,14 +135,21 @@
      !
      !*** Writes the file with the modified granulometry (aggregation + volatiles)
      !
-     open(98,file=TRIM(fgrn2) ,status='unknown',err=100)
-     write(98,'(i5)') phase(iphase)%bins
-     do ic = 1,phase(iphase)%bins
-        write(98,10) 1d3*phase(iphase)%diam(ic),phase(iphase)%rhop(ic), &
-             phase(iphase)%sphe(ic),phase(iphase)%fc(ic),TRIM(phase(iphase)%classname(ic))
-10      format(f10.6,1x,f8.1,1x,f7.3,1x,e16.9,2x,a)
-     end do
-     close(98)
+     if(my_id.eq.0)then
+     	open(98,file=TRIM(fgrn2) ,status='unknown',err=100)
+     	write(98,'(i5)') phase(iphase)%bins
+     	do ic = 1,phase(iphase)%bins
+     	   write(98,10) 1d3*phase(iphase)%diam(ic),phase(iphase)%rhop(ic), &
+     	        phase(iphase)%sphe(ic),phase(iphase)%fc(ic),TRIM(phase(iphase)%classname(ic))
+10   	   format(f10.6,1x,f8.1,1x,f7.3,1x,e16.9,2x,a)
+     	end do
+     	close(98)
+     end if
+
+     if(my_id.ne.0)then
+	open(90,file=TRIM(fgrn), status='old',err=110)
+	close(90, status='delete')
+     end if
      !
   end do
   !
@@ -150,7 +157,8 @@
   !
   !*** Errors
   !
-100 call runend('Error opening Granulometry file '//TRIM(fgrn))
+100 call runend('Error opening Granulometry file '//TRIM(fgrn2))
+110 call runend('Error opening TGSD file for removing'//TRIM(fgrn))
 end subroutine readgrn
 !
 !

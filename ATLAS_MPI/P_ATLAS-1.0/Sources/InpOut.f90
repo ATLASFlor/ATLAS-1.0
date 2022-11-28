@@ -18,7 +18,7 @@ MODULE InpOut
   character(len=s_name) :: finp, fdbs       ! Input file. Meteo file
   character(len=s_mess) :: fgrn             ! Granulometry file
   character(len=s_mess) :: fbkw             ! Backward file
-  character(len=s_mess) :: fgrn2            ! Granulometry file
+  character(len=s_mess) :: fgrn2            ! Granulometry file, taking the aggregation into account
   character(len=s_name) :: fpts             ! Track_points file
   !
   !*** Output files

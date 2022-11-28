@@ -46,7 +46,7 @@ subroutine grnfile(iphase)
 !  memo = memo + rp*phase(iphase)%bins
   ! Determine the file name
   write(ipha,'(i1)')iphase
-  fgrn = TRIM(problemname)//'_'//TRIM(phase(iphase)%sname)//'.tgsd'
+  fgrn = TRIM(problemname)//'_'//TRIM(phase(iphase)%sname)//'_'//char(my_id)//'.tgsd'
   phase(iphase)%grnpath=TRIM(fgrn)
   !
   !***  Compute particle diameter in mm
