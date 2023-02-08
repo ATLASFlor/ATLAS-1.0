@@ -243,6 +243,6 @@ subroutine initialize
    !*** Create Output-Netcdf file
    !
    if (my_id .eq. 0) call init_netcdf
-   if (my_id .eq. 0) call init_kml
+   !if (my_id .eq. 0) call init_kml
    return
 end subroutine initialize
