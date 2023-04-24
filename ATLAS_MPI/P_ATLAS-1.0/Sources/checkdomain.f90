@@ -13,7 +13,6 @@
   !
   if((lon.ge.grid%lon(grid%nx)).or.(lon.lt.grid%lon(1))) then
      if(grid%PBC_EW)then
-write(*,*)'cambio de lon'
         lon=lon-sign(360.0_rp,lon)
      else
         state= -2
@@ -24,7 +23,6 @@ write(*,*)'cambio de lon'
   !
   if(lat .ge. grid%lat(grid%ny))then
      if(grid%PBC_N) then
-write(*,*)'cambio de lon'
         lon = lon-sign(180.0_rp,lon)
         lat = 180.0_rp-lat
      else
@@ -36,7 +34,6 @@ write(*,*)'cambio de lon'
   !
   if(lat .lt. grid%lat(1))then
      if(grid%PBC_S) then
-write(*,*)'cambio de lon'
         lon = lon-sign(180.0_rp,lon)
         lat = 180.0_rp+lat
      else

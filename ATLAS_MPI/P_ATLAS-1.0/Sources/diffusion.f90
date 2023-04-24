@@ -168,9 +168,9 @@ subroutine hanna(z,rmonin,pblh,ust,wst,tlu,tlv,tlw,sigu,sigv,sigw,dsigw2dz)
   use Master
   use KindType                              
   implicit none
-  real :: corr,z, s1, s2
-  real :: ust,wst,rmonin,pblh,zeta,sigu,sigv,tlu,tlv,tlw
-  real :: sigw,dsigw2dz
+  real(rp) :: corr,z, s1, s2
+  real(rp) :: ust,wst,rmonin,pblh,zeta,sigu,sigv,tlu,tlv,tlw
+  real(rp) :: sigw,dsigw2dz
 
   ! 
   !**********************

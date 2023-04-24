@@ -173,10 +173,9 @@
         if((time.le.output%timesec(i)).and.(time+sidt.gt.output%timesec(i))) then
              call make_part_nc(i)
              call reduce_mass
-!			include 'reduce_mass_inc.f90'
 !             call make_part_kml
            if(my_id .eq. 0) then
-              call outpart_nc(i)   !saque npart2, porque el outpart_nc no lo usa
+              call outpart_nc(i)   
 !              call outpart_kml(i)
            end if
            if(i.eq.output%nt)finaloutput=.false.
@@ -186,7 +185,7 @@
       do i=1,output%nt
         if((time.ge.output%timesec(i)).and.(time+sidt.lt.output%timesec(i))) then
            if(my_id .eq. 0) then
-              call outpart_nc(i)	!saque npart2, porque el outpart_nc no lo usa
+              call outpart_nc(i)	
 !              call outpart_kml(i)
            end if
            if(i.eq.output%nt)finaloutput=.false.
@@ -218,7 +217,7 @@
   if(my_id.eq.0)then
     call writerest
   end if
-  ! Termino la paralelizacion
+  ! Ends paralelization
   call MPI_FINALIZE ( ierr )  
   !
   !*** Ends the run
