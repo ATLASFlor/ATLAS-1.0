@@ -392,7 +392,7 @@ if(sidt.gt.0) then ! Only if the file exists: only in forward case.
                  if(TRIM(words(1)).eq.'PHASE_NAME') then
                     phase(nphases)%sname = words(2)
                  else if(TRIM(words(1)).eq.'NUMBER_PARTICLES') then
-                    phase(nphases)%npart= INT(param(1))/num_procs
+                    phase(nphases)%npart= INT(param(1)/num_procs)
                     if(my_id.eq.0)write(lulog,4) nphases, phase(nphases)%npart,num_procs
 4                   format(/, 'The total number of particles to simulate in phase	', i2, '	is     : ', i10,'per core in',i4,'cores')
                  else if(TRIM(words(1)).eq.'PHASE_TYPE') then
