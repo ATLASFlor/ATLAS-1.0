@@ -94,7 +94,7 @@
    !   by the tags METEO_MODEL_DEFINITION / END_METEO_MODEL_DEFINITON
    !
    ! Activate    : yes/no
-   ! MODEL_TYPE  : WRF/GFS/DEBUG
+   ! MODEL_TYPE  : WRF/GFS/ERAINT/ERA5/DEBUG
    ! FILE        : file_path    
    ! POSTPROCESS : yes/no 
    !

@@ -11,7 +11,8 @@ subroutine set_meteo_model
   use netcdf
   use Wrf 
   use GFS
-  use EraInt  
+  use EraInt 
+  use Era5  
   use Debug                                       
   implicit none
 
@@ -36,6 +37,8 @@ subroutine set_meteo_model
         call opengfs(imodel)
      else if (TRIM(meteo(imodel)%modeltype)=='ERAINT')then
         call openeraint(imodel)
+     else if (TRIM(meteo(imodel)%modeltype)=='ERA5')then
+        call openera5(imodel)
      else if (TRIM(meteo(imodel)%modeltype)=='DEBUG')then
         call openDEBUG(imodel)
      else

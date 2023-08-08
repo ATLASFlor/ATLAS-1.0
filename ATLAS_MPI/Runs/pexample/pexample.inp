@@ -95,25 +95,21 @@
    !   by the tags METEO_MODEL_DEFINITION / END_METEO_MODEL_DEFINITON
    !
    ! Activate    : yes/no
-   ! MODEL_TYPE  : WRF/GFS/DEBUG
+   ! MODEL_TYPE  : WRF/GFS/ERAINT/ERA5/DEBUG
    ! FILE        : file_path    
    ! POSTPROCESS : yes/no 
    !
    METEO_MODEL_DEFINITION
       ACTIVATE    = yes
       MODEL_TYPE  = WRF
-      FILE        = /home/florencia/Documentos/ATLAS/ATLAS_MPI/Data/wrf-nc/pexample.wrf.nc
-!      FILE        = /home/reula/C/3D/ATLAS_MPI/Data/wrf-nc/calbuco22.wrf.nc
-!      FILE        = /Users/arnaufolch/Desktop/ATLAS/Data/wrf-nc/test.wrf.nc
+      FILE        = /ATLAS/ATLAS_MPI/Data/wrf-nc/pexample.wrf.nc
       POSTPROCESS = no
    END_METEO_MODEL_DEFINITON
    !
    METEO_MODEL_DEFINITION
       ACTIVATE    = no
       MODEL_TYPE  = GFS
-      FILE        = /home/florencia/Documentos/ATLAS/ATLAS_MPI/Data/gfs1deg-nc/test.gfs1deg.nc
-!      FILE        = /home/hp/Documentos/ATLAS/Data/gfs1deg-nc/test.gfs1deg.nc
-!      FILE        = /Users/arnaufolch/Desktop/ATLAS/Data/gfs1deg-nc/test.gfs1deg.nc
+      FILE        = /ATLAS/ATLAS_MPI/Data/gfs1deg-nc/test.gfs1deg.nc
       POSTPROCESS = yes
    END_METEO_MODEL_DEFINITON
    !
@@ -134,16 +130,12 @@
    !
    PHASE_DEFINITION
        ACTIVATE = yes
-       INCLUDE  = /home/florencia/Documentos/ATLAS/ATLAS_MPI/Runs/pexample/pexample.Phase1.inp
-!       INCLUDE  = /home/reula/C/3D/ATLAS_MPI/Runs/pcalbuco/pcalbuco.Phase1.inp
-!       INCLUDE  = /Users/arnaufolch/Desktop/ATLAS/Runs/prueba/prueba.Phase1.inp
+       INCLUDE  = /ATLAS/ATLAS_MPI/Runs/pexample/pexample.Phase1.inp
    END_PHASE_DEFINITION
    !
    PHASE_DEFINITION
        ACTIVATE = no
-       INCLUDE  = /home/florencia/Documentos/ATLAS/Runs/prueba/prueba.Phase1.inp
-!       INCLUDE  = /home/hp/Documentos/ATLAS/Runs/prueba/prueba.Phase2.inp
-!       INCLUDE  = /Users/arnaufolch/Desktop/ATLAS/Runs/prueba/prueba.Phase2.inp
+       INCLUDE  = /ATLAS/Runs/prueba/prueba.Phase1.inp
    END_PHASE_DEFINITION
 !
 !
