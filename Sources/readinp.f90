@@ -392,9 +392,9 @@
                      if (TRIM(words(1)) .eq. 'PHASE_NAME') then
                         phase(nphases)%sname = words(2)
                      else if (TRIM(words(1)) .eq. 'NUMBER_PARTICLES') then
-                        phase(nphases)%npart = INT(param(1))
-                        if (my_id .eq. 0) write (lulog, 4) nphases, phase(nphases)%npart
-4                       format(/, 'The total number of particles to simulate in phase        ', i2, '        is     : ', i10)
+                        phase(nphases)%npart = INT(param(1)/num_procs)
+                        if (my_id .eq. 0) write (lulog, 4) nphases, phase(nphases)%npart,num_procs
+4                       format(/, 'The total number of particles to simulate in phase        ', i2, '        is     : ', i10,'per core in',i4,'cores')
                      else if (TRIM(words(1)) .eq. 'PHASE_TYPE') then
                         phase(nphases)%phase_type = words(2)
                      else if (TRIM(words(1)) .eq. 'INITIAL_TIME') then

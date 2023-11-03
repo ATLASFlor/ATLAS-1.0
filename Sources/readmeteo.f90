@@ -12,6 +12,7 @@ subroutine readmeteo(nm, itime)
    use Wrf
    use GFS
    use EraInt
+   use Era5
    use Debug
    implicit none
    !
@@ -40,7 +41,11 @@ subroutine readmeteo(nm, itime)
    else if (TRIM(meteo(nm)%modeltype) == 'ERAINT') then
       !
       call readeraint(nm, itime)
-      !
+      !  
+   else if (TRIM(meteo(nm)%modeltype)=='ERA5')then
+      ! 
+      call readera5(nm,itime)
+      ! 
    else
       call runend('The model Type is not recognize')
    end if

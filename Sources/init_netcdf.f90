@@ -35,7 +35,7 @@
      !*** Creates the mesh stored as 1D vectors, with lon/lat values of the square centre.
      !
      do ix = 1, output%nx
-        lon(ix) = output%lonmin + (ix - 1./2.)*output%dx    !RESTAR 1 en vez de un medio!!!
+        lon(ix) = output%lonmin + (ix - 1./2.)*output%dx  
      end do
      !
      do iy = 1, output%ny
@@ -46,21 +46,21 @@
      !
      !*** Create a netcdf file
      !
-     if (nf90_create(TRIM(fnc_part), NF90_CLOBBER, ncid) /= NF90_NOERR) &
+     if (nf90_create(TRIM(fnc_part), NF90_CLOBBER, ncID) /= NF90_NOERR) &
         call runend('Error creting netcdf file in outpart_nc')
      !
      !*** Define Dimensions
      !
-     if (nf90_def_dim(ncid, nx_part_name, output%nx, nx_part_id) /= NF90_NOERR) &
+     if (nf90_def_dim(ncID, nx_part_name, output%nx, nx_part_id) /= NF90_NOERR) &
         call runend('Error creting netcdf nx dimension in outpart_nc')
      !
-     if (nf90_def_dim(ncid, ny_part_name, output%ny, ny_part_id) /= NF90_NOERR) &
+     if (nf90_def_dim(ncID, ny_part_name, output%ny, ny_part_id) /= NF90_NOERR) &
         call runend('Error creting netcdf ny dimension in outpart_nc')
      !
-     if (nf90_def_dim(ncid, nz_part_name, output%nz, nz_part_id) /= NF90_NOERR) &
+     if (nf90_def_dim(ncID, nz_part_name, output%nz, nz_part_id) /= NF90_NOERR) &
         call runend('Error creting netcdf nz dimension in outpart_nc')
      !
-     if (nf90_def_dim(ncid, nt_part_name, output%nt, nt_part_id) /= NF90_NOERR) &
+     if (nf90_def_dim(ncID, nt_part_name, NF90_UNLIMITED, nt_part_id) /= NF90_NOERR) &
         call runend('Error creting netcdf nt dimension in outpart_nc')
      !
      !*** Define time-independent variables

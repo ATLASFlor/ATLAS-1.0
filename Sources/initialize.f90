@@ -62,7 +62,7 @@ subroutine initialize
    end do
    if (out_meteo) call outmeteo
    !
-   !*** What follow is only for forward mode. Initialize particle structure. "Else if" is for backward
+   !*** What follows is only for forward mode. Initialize particle structure. "Else if" is for backward
    !
    if (sidt .gt. 0) then
       !
@@ -102,7 +102,7 @@ subroutine initialize
       end do !phases
       !
       !*** Allocate Particles Structure
-      !
+      ! 
       numpart = 0    ! total number of particles.
       do iphase = 1, nphases
          ! Determine which particle are the first for each phase
