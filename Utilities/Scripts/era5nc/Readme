@@ -1,0 +1,17 @@
+To run the program
+0. Adapt the makefile with the libraries path
+
+1. Download the files in netcdf format  in the same lon/lat extention
+surface (all times and all steps): Boundary layer height, Total Precipitation, 10 metre U wind component, 10 metre V wind component, 2 metre temperature
+pressure: Geopotential, Relative humidity, Temperature, U component of wind, V component of wind, Vertical velocity
+invariant: Geopotential, Land-sea mask
+If you want a global meteo, then set area since -90 to 90 latitude and -180 to 180 longitude
+
+2. Go to the erainNC.f90 file:
+	a. Put in the file erainNC.f90 the directories files 
+	b. Set times and output name file.
+
+3. Compile, in a terminal since the correct directory (where this program is)
+4. Execute with ./../erainNC.1.x  (Maybe you need to give, manually, permission to execute. right click on erainNC.1.x, permission, click in the box to execute .)
+
+5. The output file is saved in the same folder than the program is
