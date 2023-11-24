@@ -2,7 +2,7 @@
 # Lists
 #
 FMODS= KindType.o Numeric.o InpOut.o Master.o def_elsest.o TimeFun.o elsest_mod.o Wrf.o Gfs.o\
-       Debug.o Sourcemod.o EraInt.o
+       Debug.o Sourcemod.o EraInt.o Era5.o
 FOBJS= ATLAS.o openlog.o runend.o initialize.o readinp.o set_meteo_model.o set_back_mesh.o \
        init_netcdf.o init_kml.o init_outvar.o writerest.o \
        outmeteo.o meteos.o readmeteo.o interpolate.o advection.o sedimentation.o checkdomain.o\
