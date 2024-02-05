@@ -752,7 +752,7 @@
       use_pts = .false.
       !
       allocate (ielem2dpts(npts))
-      ielem2dpts = 0.0_rp
+      ielem2dpts = 1
       !
       allocate (name_file_pts(npts))
       name_file_pts = ' '
@@ -775,9 +775,9 @@
       !
       return
    end subroutine readinp_trackpts
-!
-!
-!
+! 
+! 
+! 
    subroutine get_pts_fname
       !*******************************************************************
       !*

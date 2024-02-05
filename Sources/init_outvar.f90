@@ -79,6 +79,9 @@
      if (output%track_points) then
         allocate (load_pts(npts))
         allocate (thick_pts(npts))
+        allocate (loadpts_global(npts))
+        allocate (thickpts_global(npts))
+        loadpts_global=0.0
      end if
 
      !

@@ -75,29 +75,31 @@
        end do
        !*** read the particle information.
        !filei     = 'out_'//TRIM(problemname)//'_'//char(iproc)//'.rest'
-       open (iproc, FILE=TRIM(filei), status='OLD')
-       go_on = .true.
-       do while (go_on)
-          read (iproc, '(a256)', end=102) card
-          call sdecode(card, words, param, nword, npar)
-          if (TRIM(words(1)) .eq. 'particle') then
-             go_on = .false.
-             goon = .true.
-             do while (goon)
-                read (iproc, *) parti, state, ibin, age, rho, diam, mass, sphe, psi, lon, lat, z
-                countpart = countpart + 1
-                write (88, 570) countpart, state, ibin, age, rho, &
-                   diam, mass, sphe, psi, &
-                   lon, lat, z
-570             FORMAT(i9, 1X, i2, 1X, i4, 1X, i9, 1X, f11.6, 1X, f11.6, 1X, f24.6, 1X, f11.6, 1X, f11.6, &
-                       1X, f11.6, 1X, f11.6, 1X, f15.6)
-                if (parti .eq. ipart) then
-                   goon = .false.
-                   close (iproc, status='delete')
-                end if
-             end do
-          end if
-       end do
+       if(ipart.gt.0) then
+          open (iproc, FILE=TRIM(filei), status='OLD')
+          go_on = .true.
+          do while (go_on)
+             read (iproc, '(a256)', end=102) card
+             call sdecode(card, words, param, nword, npar)
+             if (TRIM(words(1)) .eq. 'particle') then
+                go_on = .false.
+                goon = .true.
+                do while (goon)
+                   read (iproc, *) parti, state, ibin, age, rho, diam, mass, sphe, psi, lon, lat, z
+                   countpart = countpart + 1
+                   write (88, 570) countpart, state, ibin, age, rho, &
+                      diam, mass, sphe, psi, &
+                      lon, lat, z
+570                FORMAT(i9, 1X, i2, 1X, i4, 1X, i9, 1X, f11.6, 1X, f11.6, 1X, f24.6, 1X, f11.6, 1X, f11.6, &
+                          1X, f11.6, 1X, f11.6, 1X, f15.6)
+                   if (parti .eq. ipart) then
+                      goon = .false.
+                      close (iproc, status='delete')
+                   end if
+                end do  !goon until parti arrive to ipart
+             end if     ! go_on to read since the particle information.  to skip the intro
+          end do   !go_on
+       end if ! ipart gt than 0
     end do !procs
     !write total number of particles
     write (88, 571) 'TOTAL_PARTICLES', countpart

@@ -125,6 +125,7 @@ MODULE InpOut
    real(rp), allocatable:: concen_phase(:, :, :, :) !
    real(rp), allocatable:: grload_phase(:, :, :) !
    real(rp), allocatable:: load_pts(:), thick_pts(:)    ! Mass values for tracking points
+   real(rp), allocatable:: loadpts_global(:), thickpts_global(:)    ! Mass values for tracking points. whit reduced mass. mpi
 !  real (rp), allocatable:: area2d(:,:)       !ix, iy
 !  real (rp), allocatable:: volume3d(:,:,:)   ! ix,iy,iz
    !

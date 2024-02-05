@@ -23,6 +23,8 @@ subroutine reduce_mass
    call MPI_REDUCE(conc3d, conc3d_global, output%nelem3d, MPI_REAL, MPI_SUM, 0, mpi_global, ierr)
    call MPI_REDUCE(sedim, sedim_global, output%nelem2d, MPI_REAL, MPI_SUM, 0, mpi_global, ierr)
    !
+   call MPI_REDUCE(load_pts, loadpts_global, npts, MPI_REAL, MPI_SUM, 0, mpi_global, ierr)
+   call MPI_REDUCE(thick_pts, thickpts_global, npts, MPI_REAL, MPI_SUM, 0, mpi_global, ierr)
    return
 end subroutine
 

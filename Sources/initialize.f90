@@ -10,7 +10,7 @@ subroutine initialize
    implicit none
    save
    logical           :: out_meteo = .false.
-   integer(ip)       :: imodel, ipart, iphase, ibin
+   integer(ip)       :: imodel, ipart, iphase, ibin, i, ix, iy
    character(len=2) :: ext
    character(len=8) :: str
    !
@@ -240,6 +240,30 @@ subroutine initialize
    !
    call init_outvar
    !
+   !*** Tracking points
+   !*** Initialize output track points if it is necessary
+   if (output%track_points) then
+      !***  Loop over tracked points to determine the position inside the grid and their 2d-grid element
+      !
+      output%rhomean = 0
+      do iphase = 1, nphases
+         output%rhomean = output%rhomean + phase(iphase)%rhomean/nphases
+      end do
+      ! 
+      do i = 1, npts
+         if (use_pts(i)) then    
+            !*** Get the cell where the particle is
+            !
+            ix = INT((xpts(i) - output%lonmin)/output%dx) + 1
+            if (ix .eq. (output%nx + 1)) ix = output%nx
+            iy = INT((ypts(i) - output%latmin)/output%dy) + 1
+            if (iy .eq. (output%ny + 1)) iy = output%ny
+            ielem2dpts(i) = (iy - 1)*(output%nx-1) + ix
+            !
+         end if ! use_pts: if the point is inside the output domain
+      end do    ! npts
+   end if       ! if there are track points
+   ! 
    !*** Create Output-Netcdf file
    !
    if (my_id .eq. 0) call init_netcdf

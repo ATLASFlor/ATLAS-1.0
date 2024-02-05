@@ -266,19 +266,19 @@
         !
         !***  Loop over tracked points to determine the position inside the grid and their 2d-grid element
         !
-        output%rhomean = 0
-        do iphase = 1, nphases
-           output%rhomean = output%rhomean + phase(iphase)%rhomean/nphases
-        end do
+!        output%rhomean = 0
+!        do iphase = 1, nphases
+!           output%rhomean = output%rhomean + phase(iphase)%rhomean/nphases
+!        end do
         do i = 1, npts
            if (use_pts(i)) then
               !*** Get the cell where the particle is
               !
-              ix = INT((xpts(i) - output%lonmin)/output%dx) + 1
-              if (ix .eq. (output%nx + 1)) ix = output%nx
-              iy = INT((ypts(i) - output%latmin)/output%dy) + 1
-              if (iy .eq. (output%ny + 1)) iy = output%ny
-              ielem2dpts(i) = (iy - 1)*(output%nx) + ix
+!              ix = INT((xpts(i) - output%lonmin)/output%dx) + 1
+!              if (ix .eq. (output%nx + 1)) ix = output%nx
+!              iy = INT((ypts(i) - output%latmin)/output%dy) + 1
+!              if (iy .eq. (output%ny + 1)) iy = output%ny
+!              ielem2dpts(i) = (iy - 1)*(output%nx) + ix
               !
               ! Creates the files
               if (.not. restart) then
@@ -286,12 +286,18 @@
                  if (info /= 0) goto 100
                  write (79, 17) TRIM(name_pts(i)), xpts(i), ypts(i)
 17               format( &
-                    'Tracking point file for : ', a, /, &
+!                    'Tracking point file for : ', a, /, &
+!                    'Coordinates             : ', f13.4, 1x, f13.4, /, &
+!                    '  Time    DDMMMM-HH:MM    load     thickness    conc.   conc.PM5   conc.PM10  conc.PM20   cumul', /, &
+!                    '                         ground   (compact=1)   ground   ground     ground    ground      conc. ', /, &
+!                    '  (min)      (--)        (kg/m2)     (cm)       (g/m3)    (g/m3)     (g/m3)    (g/m3)     (g/m2)', /, &
+!                    '------------------------------------------------------------------------------------------------')                   
+                                        'Tracking point file for : ', a, /, &
                     'Coordinates             : ', f13.4, 1x, f13.4, /, &
-                    '  Time    DDMMMM-HH:MM    load     thickness    conc.   conc.PM5   conc.PM10  conc.PM20   cumul', /, &
-                    '                         ground   (compact=1)   ground   ground     ground    ground      conc. ', /, &
-                    '  (min)      (--)        (kg/m2)     (cm)       (g/m3)    (g/m3)     (g/m3)    (g/m3)     (g/m2)', /, &
-                    '------------------------------------------------------------------------------------------------')
+                    '  Time       load     thickness ', /, &
+                    '            ground   (compact=1)', /, &
+                    '  (min)     (kg/m2)     (cm)    ', /, &
+                    '---------------------------------------------')
               else ! restart
                  open (79, file=TRIM(name_file_pts(i))//'.res', iostat=info, status='old', position='append')
                  if (info /= 0) goto 100

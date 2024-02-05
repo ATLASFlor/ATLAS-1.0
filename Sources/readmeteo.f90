@@ -52,19 +52,19 @@ subroutine readmeteo(nm, itime)
    !
    !*** Write in log file
    !
-   write (string_time, '(F13.0)') meteo(nm)%time(itime)
-   string_time = string_time(1:4)//'/'//string_time(5:6)//'/'//string_time(7:8)//'-'//string_time(9:10) &
-                 //':'//string_time(11:12)//':00'
-   if (my_id .eq. 0) write (lulog, 5) TRIM(meteo(nm)%modeltype), &
-      TRIM(str), &
-      string_time!meteo(nm)%time(itime) f16.0
-5  format(/, &
-           'Read ', a, ' data file : ', a, ' at time : ', a,/)
-   if (out_screen) write (*, 1) TRIM(meteo(nm)%modeltype), &
-      TRIM(str), &
-      string_time!meteo(nm)%time(itime) f16.0
-1  format(/, &
-           'Read ', a, ' data file : ', a, ' at time : ', a,/)
+!   write (string_time, '(F13.0)') meteo(nm)%time(itime)
+!   string_time = string_time(1:4)//'/'//string_time(5:6)//'/'//string_time(7:8)//'-'//string_time(9:10) &
+!                 //':'//string_time(11:12)//':00'
+!   if (my_id .eq. 0) write (lulog, 5) TRIM(meteo(nm)%modeltype), &
+!      TRIM(str), &
+!      string_time!meteo(nm)%time(itime) f16.0
+!5  format(/, &
+!           'Read ', a, ' data file : ', a, ' at time : ', a,/)
+!   if (out_screen) write (*, 1) TRIM(meteo(nm)%modeltype), &
+!      TRIM(str), &
+!      string_time!meteo(nm)%time(itime) f16.0
+!1  format(/, &
+!           'Read ', a, ' data file : ', a, ' at time : ', a,/)
    !
    return
 end subroutine readmeteo
