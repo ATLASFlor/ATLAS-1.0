@@ -34,7 +34,8 @@
       character(len=2) :: ext4
       !
       integer(ip)  :: info
-      real(rp), save  :: rhomean = 0 !to calculate thickness on deposits
+      !real(rp), save  :: rhomean = 0 !to calculate thickness on deposits
+      real(rp)     :: loadpts,thickpts
       ! To calculate total number of bins
       integer(ip)  :: nbins
       integer(ip)  :: elem1, elem2, elem3, elem4, elem5, elem6, elem7, elem8
@@ -112,18 +113,18 @@
       !
       !*** Write the mass per track point if there are considered. In another files.
       !
-      timemin = int(output%timesec(iout)/60)
+      timemin = INT(output%timesec(iout)/60)
       if (output%track_points) then
          do i = 1, npts
             if (use_pts(i)) then
                open (79, file=TRIM(name_file_pts(i))//'.res', iostat=info, status='old', position='append')
                if (info /= 0) goto 100
                !calc thickness in cm (Divides value of sedimentation load by average particle density, and multiply by 100)
-               load_pts = sedim(ielem2dpts(i))  !kg/m2
-               thick_pts = load_pts/rhomean     !
-               thick_pts = thick_pts*1d2 !in cm
-               write (79, 20) timemin, load_pts, thick_pts
-20             format(i7, 1x, f13.6, 1x, f13.6)
+               loadpts = loadpts_global(i)!sedim(ielem2dpts(i))  !kg/m2
+               !thick_pts = load_pts/rhomean     !
+               thickpts = thickpts_global(i)!thick_pts*1d2 !in cm
+               write (79, 20)timemin,loadpts,thickpts
+20             format(i7, 1x, f13.8, 1x, f13.8)
                close (79)
             end if !use_pts
          end do !npts
@@ -133,10 +134,30 @@
       !
       !***  Writes the log file
       !
-      write (ext2, '(f10.0)') output%timesec(iout)
+      write (ext2, '(i7)') timemin!output%timesec(iout)
       !
       !
-2     format(/, a/)
+!2     format(/, a/)
+
+
+   !*** Write in log file    para modificar!!! lo de arriba no estaria funcionando.. no escribe en el log|
+   !
+!   write (string_time, '(F13.0)') meteo(nm)%time(itime)
+!   string_time = string_time(1:4)//'/'//string_time(5:6)//'/'//string_time(7:8)//'-'//string_time(9:10) &
+!                 //':'//string_time(11:12)//':00'
+   write (lulog, 21) ext2, massair_global,massground_global,massinside_global,massoutside_global,masstotal_global
+21  format(/, &
+           'Output information for ', a, ' minutes was written. ', /,&
+	   'The mass in the air amounts', f16.0, 'kg', /,&
+	   'The mass in the ground amounts', f16.0, 'kg', /,&
+	   'The mass inside the domain amounts', f16.0, 'kg', /,&
+	   'The mass outside the domain amounts', f16.0, 'kg', /,&
+	   'The total mass amounts', f18.0, 'kg'/)
+!   if (out_screen) write (*, 1) TRIM(meteo(nm)%modeltype), &
+!      TRIM(str), &
+!      string_time!meteo(nm)%time(itime) f16.0
+!1  format(/, &
+!           'Read ', a, ' data file : ', a, ' at time : ', a,/)
       !
       return
 

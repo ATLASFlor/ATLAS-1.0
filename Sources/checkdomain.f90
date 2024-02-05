@@ -6,7 +6,7 @@
       use Master
       use KindType
       implicit none
-      integer      :: state
+      integer   :: state
       real(rp)  :: lon, lat, z
       !
       !***Check if the particle is outside the domain from longitude
