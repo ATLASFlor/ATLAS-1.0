@@ -58,7 +58,7 @@
       !
       write (ext, '(i1)') iout
       if (nf90_put_var(ncID, conc3d_ID, conc3d_global, start=(/1, 1, 1, iout/), &
-                       count=(/(output%nx - 1), (output%ny - 1), (output%nz), 1/)) /= NF90_NOERR) &
+                       count=(/(output%nx - 1), (output%ny - 1), (output%nz-1), 1/)) /= NF90_NOERR) &
          call wriwar('outpart : error in nf90_put_var for variable conc3d for output time'//ext)
       !
       if (nf90_put_var(ncID, conc2d_ID, conc2d_global, start=(/1, 1, iout/), &
